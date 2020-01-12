@@ -21,8 +21,6 @@ public class RedisConfig {
         this.template = template;
     }
     public JedisClientConfiguration getJedisPoolConfig(){
-        JedisClientConfiguration configuration = null;
-
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(redisPoolInfo.getMaxIdle());
         jedisPoolConfig.setMaxTotal(redisPoolInfo.getMaxIdle());
@@ -36,6 +34,9 @@ public class RedisConfig {
     public RedisStandaloneConfiguration getConfiguration(){
         RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration(redisPoolInfo.getHost(), redisPoolInfo.getPort());
         redisStandaloneConfiguration.setPassword(redisPoolInfo.getPass());
+        redisStandaloneConfiguration.setPort(redisPoolInfo.getPort());
+        redisStandaloneConfiguration.setDatabase(redisPoolInfo.getDatabase());
+        redisStandaloneConfiguration.setHostName(redisPoolInfo.getHost());
         return redisStandaloneConfiguration;
     }
 

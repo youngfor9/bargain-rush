@@ -12,6 +12,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public class RedisPoolInfo {
     private String host;
     private int port;
+    private int database;
     private String pass;
     private int maxIdle;
     private int maxActive;
